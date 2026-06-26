@@ -1,4 +1,7 @@
 from flask import Flask, send_from_directory
+import mimetypes
+mimetypes.add_type("application/wasm", ".wasm")
+mimetypes.add_type("application/octet-stream", ".pck")
 
 app = Flask(__name__)
 
@@ -14,7 +17,7 @@ def add_headers(response):
 
 @app.route("/<path:filename>")
 def serve_static(filename):
-    return send_from_directory("static", filename)
+    return send_from_directory("static", filename)~
 
 
 
